@@ -1,4 +1,4 @@
-package com.taskagile.domain.application.model.user;
+package com.taskagile.domain.model.user;
 
 public class RegistrationException extends Exception{
 }
