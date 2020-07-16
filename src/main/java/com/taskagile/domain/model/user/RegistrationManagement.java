@@ -1,5 +1,6 @@
 package com.taskagile.domain.model.user;
 
+import com.taskagile.domain.common.security.PasswordEncryptor;
 import com.taskagile.domain.common.security.PasswordEncryptorDelegator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class RegistrationManagement {
 
   private final UserRepository userRepository;
-  private final PasswordEncryptorDelegator passwordEncryptor;
+  private final PasswordEncryptor passwordEncryptor;
 
   public User register(String username, String emailAddress, String password) throws  RegistrationException {
 

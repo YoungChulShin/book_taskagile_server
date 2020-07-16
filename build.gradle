@@ -32,6 +32,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.6.1")
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
 }
 
 test {
