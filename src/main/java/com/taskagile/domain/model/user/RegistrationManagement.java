@@ -1,0 +1,33 @@
+package com.taskagile.domain.model.user;
+
+import com.taskagile.domain.common.security.PasswordEncryptorDelegator;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@RequiredArgsConstructor
+@Component
+public class RegistrationManagement {
+
+  private final UserRepository userRepository;
+  private final PasswordEncryptorDelegator passwordEncryptor;
+
+  public User register(String username, String emailAddress, String password) throws  RegistrationException {
+
+    User existsUser = userRepository.findByUsername(username);
+    if (existsUser != null) {
+      throw new UsernameExistsException();
+    }
+
+    existsUser = userRepository.findByEmailAddress(emailAddress);
+    if (existsUser != null) {
+      throw new EmailAddressExistsException();
+    }
+
+    String encryptedPassword = passwordEncryptor.encrypt(password);
+    User user = User.create(username, emailAddress.toLowerCase(), encryptedPassword);
+
+    userRepository.save(user);
+
+    return user;
+  }
+}
