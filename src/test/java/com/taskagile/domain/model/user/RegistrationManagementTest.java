@@ -4,6 +4,8 @@ import com.taskagile.domain.common.security.PasswordEncryptor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -68,5 +70,32 @@ public class RegistrationManagementTest {
 
     // 해당 인스턴스로 저장이 한번 발생했는지 테스트
     Mockito.verify(userRepositoryMock).save(userToSave);
+  }
+
+  @Test
+  public void register_newUser_shouldSucceed() throws RegistrationException {
+    String username = "youngchulshin";
+    String emailAddress = "go1323@gmail.com";
+    String password = "myPassword";
+    String encryptedPassword = "EcryptedPassword";
+    User newUser = User.create(username, emailAddress, encryptedPassword);
+
+    // 등록을 위한 동작이 수행될 때 아무것도 하지 않도록 설정
+    Mockito.when(userRepositoryMock.findByUsername(username)).thenReturn(null);
+    Mockito.when(userRepositoryMock.findByEmailAddress(emailAddress)).thenReturn(null);
+    Mockito.when(userRepositoryMock.save(newUser)).thenReturn(newUser);
+
+    Mockito.when(passwordEncryptorMock.encrypt(password))
+      .thenReturn(encryptedPassword);
+
+    // userRepositoryMock 검증 - API 들이 순차적으로 모두 수행되었는가?
+    User savedUser = instance.register(username, emailAddress, password);
+    InOrder inOrder = Mockito.inOrder(userRepositoryMock);
+    inOrder.verify(userRepositoryMock).findByUsername(username);
+    inOrder.verify(userRepositoryMock).findByEmailAddress(emailAddress);
+    inOrder.verify(userRepositoryMock).save(newUser);
+
+    // 암호화 코드가 수행되었는지
+    Mockito.verify(passwordEncryptorMock).encrypt(password);
   }
 }

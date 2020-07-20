@@ -45,10 +45,6 @@ public class User extends AbstractBaseEntity {
     return user;
   }
 
-//  public UserId getId() {
-//    return new UserId(id);
-//  }
-
   @Override
   public boolean equals(Object obj) {
 
