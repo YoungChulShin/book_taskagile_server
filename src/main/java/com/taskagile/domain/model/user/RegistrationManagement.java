@@ -1,7 +1,6 @@
 package com.taskagile.domain.model.user;
 
 import com.taskagile.domain.common.security.PasswordEncryptor;
-import com.taskagile.domain.common.security.PasswordEncryptorDelegator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
