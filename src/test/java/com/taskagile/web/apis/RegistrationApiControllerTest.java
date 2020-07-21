@@ -1,6 +1,7 @@
 package com.taskagile.web.apis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.taskagile.config.SecurityConfiguration;
 import com.taskagile.domain.application.UserService;
 import com.taskagile.domain.model.user.UsernameExistsException;
 import com.taskagile.web.payloads.RegistrationPayload;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,6 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(RegistrationApiController.class)
+@ActiveProfiles("test")
+@ContextConfiguration(classes = {SecurityConfiguration.class, RegistrationApiController.class})
 public class RegistrationApiControllerTest {
 
   @Autowired
@@ -59,6 +64,5 @@ public class RegistrationApiControllerTest {
         .content(objectMapper.writeValueAsString(payload)))
       .andExpect(status().is(400))
       .andExpect(jsonPath("$.message").value("Username already exists"));
-
   }
 }

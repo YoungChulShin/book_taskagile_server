@@ -14,3 +14,4 @@ logging:
      org.hibernate.SQL: debug
      org.hibernate.type: trace
      com.taskagile: debug
+     org.springframework.security: debug
