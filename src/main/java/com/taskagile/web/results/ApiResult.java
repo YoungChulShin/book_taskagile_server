@@ -6,6 +6,8 @@ import java.util.HashMap;
 
 public class ApiResult extends HashMap<String, Object> {
 
+  private static final long serialVersionUID = -1036903122946860277L;
+
   private static final String MESSAGE_KEY = "message";
   private static final String ERROR_CODE_KEY = "errorReferenceCode";
 

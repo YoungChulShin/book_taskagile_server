@@ -5,11 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 public class RegistrationManagementTest {
@@ -89,7 +86,7 @@ public class RegistrationManagementTest {
       .thenReturn(encryptedPassword);
 
     // userRepositoryMock 검증 - API 들이 순차적으로 모두 수행되었는가?
-    User savedUser = instance.register(username, emailAddress, password);
+    instance.register(username, emailAddress, password);
     InOrder inOrder = Mockito.inOrder(userRepositoryMock);
     inOrder.verify(userRepositoryMock).findByUsername(username);
     inOrder.verify(userRepositoryMock).findByEmailAddress(emailAddress);

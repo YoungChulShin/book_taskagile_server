@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.StringUtils;
@@ -32,7 +31,7 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 
   @Override
   public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-      throws AuthenticationException, IOException, ServletException {
+      throws IOException, ServletException {
 
         // xxx-from-urlencoded를 Object로 변경
         log.debug("Processing login request");
