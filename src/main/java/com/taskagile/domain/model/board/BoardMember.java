@@ -33,7 +33,6 @@ public class BoardMember extends AbstractBaseEntity {
     return boardMember;
   }
 
-
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {
