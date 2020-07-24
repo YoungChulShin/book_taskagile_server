@@ -1,6 +1,10 @@
 package com.taskagile.domain.model.user;
 
 import com.taskagile.domain.common.security.PasswordEncryptor;
+import com.taskagile.domain.model.user.exceptions.EmailAddressExistsException;
+import com.taskagile.domain.model.user.exceptions.RegistrationException;
+import com.taskagile.domain.model.user.exceptions.UsernameExistsException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +28,7 @@ public class RegistrationManagementTest {
 
   // 이미 존재하는 사용자명을 갖는 사용자를 등록 시도할 때 실패하는가?
   @Test(expected = UsernameExistsException.class)
-  public void register_existedUsername_shouldFail() throws  RegistrationException {
+  public void register_existedUsername_shouldFail() throws RegistrationException {
     String username = "youngchulshin";
     String emailAddress = "go1323@gmail.com";
     String password = "1234567";

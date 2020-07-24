@@ -1,5 +1,8 @@
 package com.taskagile.domain.application.commands;
 
+import lombok.Getter;
+
+@Getter
 public class CreateTeamCommand {
 
   private Long userId;

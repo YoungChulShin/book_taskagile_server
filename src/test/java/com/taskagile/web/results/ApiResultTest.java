@@ -12,4 +12,20 @@ public class ApiResultTest {
 
     fail();
   }
+
+  @Test
+  public void add_validData_shouldSucceed() {
+
+    // given
+    String key = "testKey";
+    String value = "testValue";
+
+    // when
+    ApiResult apiResult = ApiResult.blank().add(key, value);
+
+    // then
+    assertNotNull("Added data should not be null", apiResult.get(key));
+    assertEquals(1, apiResult.keySet().size());
+    assertEquals(value, apiResult.get(key));
+  }
 }

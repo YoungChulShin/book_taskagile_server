@@ -3,7 +3,7 @@ package com.taskagile.web.apis;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taskagile.config.SecurityConfiguration;
 import com.taskagile.domain.application.UserService;
-import com.taskagile.domain.model.user.UsernameExistsException;
+import com.taskagile.domain.model.user.exceptions.UsernameExistsException;
 import com.taskagile.web.payloads.RegistrationPayload;
 import org.junit.Test;
 import org.junit.runner.RunWith;

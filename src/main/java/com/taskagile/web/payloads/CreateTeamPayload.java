@@ -1,7 +1,6 @@
 package com.taskagile.web.payloads;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import com.taskagile.domain.application.commands.CreateTeamCommand;
 

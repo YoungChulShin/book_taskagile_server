@@ -3,12 +3,13 @@ package com.taskagile.domain.application.impl;
 import com.taskagile.domain.application.commands.RegistrationCommand;
 import com.taskagile.domain.common.event.DomainEventPublisher;
 import com.taskagile.domain.common.mail.MailManager;
-import com.taskagile.domain.model.user.RegistrationException;
 import com.taskagile.domain.model.user.RegistrationManagement;
 import com.taskagile.domain.model.user.User;
 import com.taskagile.domain.model.user.UserRepository;
-import com.taskagile.domain.model.user.UsernameExistsException;
 import com.taskagile.domain.model.user.events.UserRegisteredEvent;
+import com.taskagile.domain.model.user.exceptions.RegistrationException;
+import com.taskagile.domain.model.user.exceptions.UsernameExistsException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

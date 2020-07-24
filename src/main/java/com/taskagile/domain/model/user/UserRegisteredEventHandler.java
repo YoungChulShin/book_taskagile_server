@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserRegisteredEventHandler {
 
-  private final static Logger log = LoggerFactory.getLogger(UserRegisteredEventHandler.class);
+  private static final Logger log = LoggerFactory.getLogger(UserRegisteredEventHandler.class);
 
   @EventListener(UserRegisteredEvent.class)
   public void handleEvent(UserRegisteredEvent event) {
