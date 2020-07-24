@@ -14,6 +14,10 @@ public final class Result {
     return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
+  public static ResponseEntity<ApiResult> created(ApiResult payload) {
+    return ResponseEntity.status(HttpStatus.CREATED).body(payload);
+  }
+
   public static ResponseEntity<ApiResult> ok() {
     return ResponseEntity.status(HttpStatus.OK).build();
   }
