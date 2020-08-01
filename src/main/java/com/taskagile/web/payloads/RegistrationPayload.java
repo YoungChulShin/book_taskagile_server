@@ -20,7 +20,7 @@ public class RegistrationPayload {
   @NotNull
   private String emailAddress;
 
-  @Size(min = 6, max = 30)
+  @Size(min = 6, max = 30, message = "Password must be between 6 and 30 characters")
   @NotNull
   private String password;
 
