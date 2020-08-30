@@ -90,7 +90,7 @@ public class Board extends AbstractBaseEntity {
       ", name='" + name + '\'' +
       ", description='" + description + '\'' +
       ", userId=" + user.getId() +
-      ", teamId=" + team.getId() +
+      ", teamId=" + ((team == null) ? "" : team.getId()) +
       ", archived=" + archived +
       ", createdDate=" + createdDate +
       '}';

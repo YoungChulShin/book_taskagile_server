@@ -29,10 +29,6 @@ public class TeamApiController {
   @PostMapping("/api/teams")
   public ResponseEntity<ApiResult> createTeam(@Valid @RequestBody CreateTeamPayload payload, @CurrentUser SimpleUser currentUser) {
 
-    if (currentUser == null) {
-      currentUser = new SimpleUser(userService.findUserById(1L));
-    }
-
     try {
       Team team = teamService.createTeam(payload.toCommand(currentUser.getUserId()));
       return CreateTeamResult.build(team);

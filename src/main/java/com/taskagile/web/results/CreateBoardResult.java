@@ -14,7 +14,7 @@ public class CreateBoardResult {
       .add("id", board.getId().toString())
       .add("name", board.getName())
       .add("description", board.getDescription())
-      .add("teamId", board.getTeam().getId().toString())
+      .add("teamId", (board.getTeam() != null) ? board.getTeam().getId().toString() : "null")
       .add("userId", board.getUser().getId().toString());
 
     return Result.created(apiResult);
