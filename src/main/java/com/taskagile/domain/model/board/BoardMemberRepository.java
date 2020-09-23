@@ -11,6 +11,6 @@ public interface BoardMemberRepository extends JpaRepository<BoardMember, Long> 
 
   @Query(" select u " +
          " from User u left join BoardMember bm on u.id = bm.id.user.id " +
-         " where bm.id = :boardId")
+         " where bm.id.board.id = :boardId")
   List<User> findMembers(@Param("boardId") Long boardId);
 }
