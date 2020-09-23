@@ -18,6 +18,7 @@ import com.taskagile.domain.model.team.Team;
 import com.taskagile.domain.model.user.User;
 
 import lombok.Getter;
+import org.hibernate.annotations.Type;
 
 @Getter
 @Table(name = "board")
@@ -30,21 +31,21 @@ public class Board extends AbstractBaseEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "name", nullable = false, length = 128, unique = true)
+  @Column(name = "name", nullable = false, length = 128)
   private String name;
 
   @Column(name = "description", nullable = false, length = 256)
   private String description;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "team_id")
+  @JoinColumn(name = "team_id", nullable = true)
   private Team team;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
   private User user;
 
-  @Column(name = "archived")
+  @Column(name = "archived", columnDefinition = "TINYINT(1)")
   private boolean archived;
 
   @Column(name = "createdDate", nullable = false)

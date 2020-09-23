@@ -64,12 +64,12 @@ public class BoardMember extends AbstractBaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @OneToOne
-    @JoinColumn(name = "board_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id", nullable = false)
     private Board board;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = true)
     private User user;
 
     private BoardMemberId(Board board, User user) {

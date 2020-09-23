@@ -17,6 +17,7 @@ import com.taskagile.domain.common.model.AbstractBaseEntity;
 import com.taskagile.domain.model.user.User;
 
 import lombok.Getter;
+import org.hibernate.annotations.Type;
 
 @Getter
 @Table(name = "team")
@@ -36,6 +37,7 @@ public class Team extends AbstractBaseEntity {
   @JoinColumn(name = "user_id")
   private User user;
 
+  @Column(name = "archived", columnDefinition = "TINYINT(1)")
   private boolean archived;
 
   private LocalDateTime createdDate;
