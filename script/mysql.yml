@@ -1,0 +1,11 @@
+version: '2'
+services:
+  taskagile_mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=1323
+      - MYSQL_DATABASE=taskagile
+    ports:
+    - 3306:3306
+
