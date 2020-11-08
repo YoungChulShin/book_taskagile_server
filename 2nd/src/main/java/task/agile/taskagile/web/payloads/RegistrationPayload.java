@@ -1,4 +1,4 @@
-package task.agile.taskagile.web.payload;
+package task.agile.taskagile.web.payloads;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package task.agile.taskagile.web.payload;
+package task.agile.taskagile.web.payloads;
 
 
 import org.junit.jupiter.api.BeforeEach;

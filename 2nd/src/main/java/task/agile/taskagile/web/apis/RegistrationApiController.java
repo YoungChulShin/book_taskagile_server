@@ -1,4 +1,4 @@
-package task.agile.taskagile.web.api;
+package task.agile.taskagile.web.apis;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -6,7 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import task.agile.taskagile.domain.UserService;
-import task.agile.taskagile.web.payload.RegistrationPayload;
+import task.agile.taskagile.web.payloads.RegistrationPayload;
+import task.agile.taskagile.web.results.ApiResult;
 
 import javax.validation.Valid;
 
@@ -19,7 +20,8 @@ public class RegistrationApiController {
   @PostMapping("/api/registration")
   public ResponseEntity<ApiResult> register(@Valid @RequestBody RegistrationPayload payload) {
     try {
-      userService.re
+      userService.register(payload.toCommand());
+      return Result.created();
     }
 
   }
