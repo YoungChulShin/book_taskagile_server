@@ -36,6 +36,6 @@ public class RegistrationApiController {
         errorMessage = "Email address already exists";
       }
       return Result.failure(errorMessage);
-    }
+    }RegistrationControllerTest
   }
 }
