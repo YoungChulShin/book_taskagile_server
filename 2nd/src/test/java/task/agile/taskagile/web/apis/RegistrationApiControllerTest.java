@@ -8,21 +8,25 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import task.agile.taskagile.domain.application.UserService;
+import task.agile.taskagile.domain.model.user.exceptions.UsernameExistsException;
 import task.agile.taskagile.web.payloads.RegistrationPayload;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @WebMvcTest(RegistrationApiController.class)
-class RegistrationControllerTest {
+class RegistrationApiControllerTest {
 
-  @Autowired private MockMvc mvc;
-  @Autowired private ObjectMapper objectMapper;
+  @Autowired
+  private MockMvc mvc;
 
   @MockBean
   private UserService serviceMock;
 
+  @Autowired
+  private ObjectMapper objectMapper;
 
   @Test
   void register_blankPayload_shouldFailAndReturn400() throws Exception {
@@ -33,10 +37,11 @@ class RegistrationControllerTest {
   @Test
   void register_existedUsername_shouldFailAndReturn400() throws Exception {
     RegistrationPayload payload = new RegistrationPayload();
-    payload.setUsername("testUser");
-    payload.setEmailAddress("test@test.com");
-    payload.setPassword("testPassword");
+    payload.setUsername("exist");
+    payload.setEmailAddress("test@taskagile.com");
+    payload.setPassword("MyPassword!");
 
+    // Mock 등록
     Mockito.doThrow(UsernameExistsException.class)
       .when(serviceMock)
       .register(payload.toCommand());
