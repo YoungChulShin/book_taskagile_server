@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import task.agile.taskagile.domain.application.commands.RegistrationCommand;
+import task.agile.taskagile.domain.common.event.DomainEventPublisher;
+import task.agile.taskagile.domain.common.mail.MailManager;
+import task.agile.taskagile.domain.model.user.RegistrationManagement;
 import task.agile.taskagile.domain.model.user.exceptions.RegistrationException;
 import task.agile.taskagile.domain.model.user.exceptions.UsernameExistsException;
 

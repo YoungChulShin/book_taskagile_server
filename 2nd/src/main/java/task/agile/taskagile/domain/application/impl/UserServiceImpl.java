@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
 
     // 메일 보내기
     sendWelcomeMessage(newUser);
+
     // 이벤트 발생
     domainEventPublisher.publish(new UserRegisteredEvent(newUser));
   }
