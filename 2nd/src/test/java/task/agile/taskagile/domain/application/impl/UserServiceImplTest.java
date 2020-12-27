@@ -8,6 +8,7 @@ import task.agile.taskagile.domain.application.commands.RegistrationCommand;
 import task.agile.taskagile.domain.common.event.DomainEventPublisher;
 import task.agile.taskagile.domain.common.mail.MailManager;
 import task.agile.taskagile.domain.model.user.RegistrationManagement;
+import task.agile.taskagile.domain.model.user.UserRepository;
 import task.agile.taskagile.domain.model.user.exceptions.RegistrationException;
 import task.agile.taskagile.domain.model.user.exceptions.UsernameExistsException;
 
@@ -19,14 +20,16 @@ class UserServiceImplTest {
   private DomainEventPublisher eventPublisherMock;
   private MailManager mailManagerMock;
   private UserServiceImpl instance;
+  private UserRepository userRepositoryMock;
 
   @BeforeEach
   public void setup() {
     registrationManagementMock = Mockito.mock(RegistrationManagement.class);
     eventPublisherMock = Mockito.mock(DomainEventPublisher.class);
     mailManagerMock = Mockito.mock(MailManager.class);
+    userRepositoryMock = Mockito.mock(UserRepository.class);
 
-    instance = new UserServiceImpl(registrationManagementMock, eventPublisherMock, mailManagerMock);
+    instance = new UserServiceImpl(registrationManagementMock, eventPublisherMock, mailManagerMock, userRepositoryMock);
   }
 
   @Test
