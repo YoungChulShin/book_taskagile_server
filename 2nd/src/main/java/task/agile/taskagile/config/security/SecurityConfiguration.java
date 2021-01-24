@@ -1,14 +1,11 @@
 package task.agile.taskagile.config.security;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @RequiredArgsConstructor
@@ -18,7 +15,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   private final JwtTokenProvider jwtTokenProvider;
 
   private static final String[] PUBLIC =
-    new String[] {"/error", "/login", "/logout", "/register", "/api/registrations"};
+    new String[] {"/error", "/api/login", "/logout", "/register", "/api/registrations"};
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
