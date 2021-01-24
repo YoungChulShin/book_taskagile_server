@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 import task.agile.taskagile.domain.application.commands.RegistrationCommand;
 import task.agile.taskagile.domain.common.event.DomainEventPublisher;
 import task.agile.taskagile.domain.common.mail.MailManager;
+import task.agile.taskagile.domain.model.user.LoginManagement;
 import task.agile.taskagile.domain.model.user.RegistrationManagement;
 import task.agile.taskagile.domain.model.user.UserRepository;
 import task.agile.taskagile.domain.model.user.exceptions.RegistrationException;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserServiceImplTest {
 
   private RegistrationManagement registrationManagementMock;
+  private LoginManagement loginManagementMock;
   private DomainEventPublisher eventPublisherMock;
   private MailManager mailManagerMock;
   private UserServiceImpl instance;
@@ -25,11 +27,12 @@ class UserServiceImplTest {
   @BeforeEach
   public void setup() {
     registrationManagementMock = Mockito.mock(RegistrationManagement.class);
+    loginManagementMock = Mockito.mock(LoginManagement.class);
     eventPublisherMock = Mockito.mock(DomainEventPublisher.class);
     mailManagerMock = Mockito.mock(MailManager.class);
     userRepositoryMock = Mockito.mock(UserRepository.class);
 
-    instance = new UserServiceImpl(registrationManagementMock, eventPublisherMock, mailManagerMock, userRepositoryMock);
+    instance = new UserServiceImpl(registrationManagementMock, loginManagementMock, eventPublisherMock, mailManagerMock, userRepositoryMock);
   }
 
   @Test

@@ -24,6 +24,16 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-security'
   implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+  // Mail 전달
+  implementation 'org.springframework.boot:spring-boot-starter-mail'
+  implementation 'org.freemarker:freemarker'
+
+  // StringUtils
+  implementation 'org.apache.commons:commons-lang3'
+
+  // application property
+  annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
   implementation 'org.hibernate.validator:hibernate-validator'
   compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
   compile 'javax.validation:validation-api'

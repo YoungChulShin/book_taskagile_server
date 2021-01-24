@@ -7,6 +7,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  freemarker:
+    template-loader-path: classpath:/mail-templates/
+  mail:
+    host: localhost
+    port: 1025
+    properties:
+      mail:
+        smtp:
+          auth: false
 
 logging:
   level:
@@ -14,3 +23,6 @@ logging:
     org.hibernate.type: trace
     task.agile: debug
     org.springframework.security: debug
+
+app:
+  mail-from: noreply@taskagile.com
