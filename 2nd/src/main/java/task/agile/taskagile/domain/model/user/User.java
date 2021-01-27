@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import task.agile.taskagile.domain.common.model.AbstractBaseEntity;
+import task.agile.taskagile.domain.model.board.Board;
 import task.agile.taskagile.domain.model.team.Team;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class User extends AbstractBaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "user_id")
   private Long id;
 
   @Column(name = "username", nullable = false, length = 50, unique = true)
@@ -38,6 +40,9 @@ public class User extends AbstractBaseEntity {
 
   @OneToMany(mappedBy = "user")
   private List<Team> teams = new ArrayList<>();
+
+  @OneToMany(mappedBy = "user")
+  private List<Board> boards = new ArrayList<>();
 
 
   public static User create(String username, String emailAddress, String password) {
