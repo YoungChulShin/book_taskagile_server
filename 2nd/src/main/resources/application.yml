@@ -26,3 +26,5 @@ logging:
 
 app:
   mail-from: noreply@taskagile.com
+  file-storage:
+    avtive: localFileStorage
