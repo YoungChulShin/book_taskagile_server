@@ -8,6 +8,8 @@ import task.agile.taskagile.domain.model.team.Team;
 import task.agile.taskagile.domain.model.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "board")
@@ -35,6 +37,9 @@ public class Board extends AbstractBaseEntity {
 
   @Column(name = "archived")
   private boolean archived;
+
+  @OneToMany(mappedBy = "id.board")
+  private List<BoardMember> boardMembers = new ArrayList<>();
 
   //== 생성 메서드
   public static Board create(String name, String description, User user, Team team) {

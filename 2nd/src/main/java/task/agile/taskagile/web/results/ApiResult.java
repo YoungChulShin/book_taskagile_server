@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.util.Assert;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiResult extends HashMap<String, Object> {
@@ -37,9 +38,9 @@ public class ApiResult extends HashMap<String, Object> {
     return apiResult;
   }
 
-  public ApiResult add(String key, String value) {
+  public ApiResult add(String key, Object value) {
     Assert.hasText(key, "Parameter key must not be blank");
-    Assert.hasText(value, "Parameter value must not be blank");
+    Assert.notNull(value, "Parameter value must not be blank");
 
     this.put(key, value);
     return this;

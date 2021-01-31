@@ -1,6 +1,8 @@
 package task.agile.taskagile.domain.model.board;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import task.agile.taskagile.domain.common.model.AbstractBaseEntity;
 import task.agile.taskagile.domain.model.user.User;
 
@@ -12,12 +14,14 @@ import java.io.Serializable;
 @Getter
 public class BoardMember extends AbstractBaseEntity {
 
+  @EmbeddedId
+  private BoardMemberId id;
 
-
-
-
-
-
+  public static BoardMember create(Board board, User user) {
+    BoardMember boardMember = new BoardMember();
+    boardMember.id = new BoardMemberId(board, user);
+    return boardMember;
+  }
 
   @Override
   public boolean equals(Object obj) {
@@ -34,6 +38,8 @@ public class BoardMember extends AbstractBaseEntity {
     return null;
   }
 
+  @Embeddable
+  @NoArgsConstructor(access = AccessLevel.PROTECTED)
   public static class BoardMemberId implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,7 +51,8 @@ public class BoardMember extends AbstractBaseEntity {
     private User user;
 
     public BoardMemberId(Board board, User user) {
-
+      this.board = board;
+      this.user = user;
     }
   }
 }
