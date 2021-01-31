@@ -48,6 +48,7 @@ public class Board extends AbstractBaseEntity {
     board.description = description;
     board.setUser(user);
     board.setTeam(team);
+
     board.archived = false;
 
     return board;

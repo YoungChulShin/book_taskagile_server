@@ -20,6 +20,9 @@ public class BoardMember extends AbstractBaseEntity {
   public static BoardMember create(Board board, User user) {
     BoardMember boardMember = new BoardMember();
     boardMember.id = new BoardMemberId(board, user);
+
+    board.getBoardMembers().add(boardMember);
+
     return boardMember;
   }
 
